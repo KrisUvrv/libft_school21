@@ -6,7 +6,7 @@
 /*   By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:46:51 by ebloodbe          #+#    #+#             */
-/*   Updated: 2021/10/09 20:32:07 by ebloodbe         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:37:36 by ebloodbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_result_free(char **result, size_t lenght)
 	free(result);
 }
 
-static int	ft_count_length(char const *s, char c)
+static int	ft_count_words(char const *s, char c)
 {
 	size_t	size;
 	size_t	length;
@@ -55,7 +55,7 @@ static char	**ft_result_alloc(char const *s, char c)
 	char	**result;
 	size_t	length;
 
-	length = ft_count_length(s, c);
+	length = ft_count_words(s, c);
 	result = (char **)malloc(sizeof(char *) * length + 1);
 	return (result);
 }
@@ -92,12 +92,12 @@ static int	ft_process(char const *s, char **result, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	size_t	index;
 
+	if (!s)
+		return (NULL);
 	result = ft_result_alloc(s, c);
 	if (!result)
 		return (NULL);
-	index = 0;
 	if (ft_process(s, result, c) == 0)
 		return (NULL);
 	return (result);

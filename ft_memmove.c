@@ -6,7 +6,7 @@
 /*   By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 13:36:53 by ebloodbe          #+#    #+#             */
-/*   Updated: 2021/10/09 21:58:54 by ebloodbe         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:37:16 by ebloodbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char	*d;
 	unsigned char	*s;
+	size_t			i;
 
 	d = (unsigned char *)dst;
 	s = (unsigned char *)src;
+	i = 0;
 	if (!dst && !src)
 		return (dst);
 	if (src < dst)

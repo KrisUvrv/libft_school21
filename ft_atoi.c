@@ -6,7 +6,7 @@
 /*   By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:58:02 by ebloodbe          #+#    #+#             */
-/*   Updated: 2021/10/09 22:02:51 by ebloodbe         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:20:02 by ebloodbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	ft_atoi(const char *str)
 {
-	unsigned long long	num;
-	int					sign;
+	unsigned int long long	num;
+	int						sign;
 
 	num = 0;
 	sign = 1;
@@ -30,7 +30,7 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + *str++ - '0';
-		if (LONG_MAX / 10 < num)
+		if (LLONG_MAX / 10 < num)
 		{
 			if (sign == -1)
 				return (0);

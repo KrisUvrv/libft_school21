@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 17:04:38 by ebloodbe          #+#    #+#             */
-/*   Updated: 2021/10/09 17:12:26 by ebloodbe         ###   ########.fr       */
+/*   Updated: 2021/10/25 11:36:59 by ebloodbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,27 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_list;
+	t_list	*tmp;
 	t_list	*map;
 
-	new_list = ft_lstnew(f(lst->content));
-	if (!new_list)
+	if (!lst || !f)
 		return (NULL);
-	map = new_list;
+	tmp = ft_lstnew(f(lst->content));
+	if (!tmp)
+		return (NULL);
+	map = tmp;
 	lst = lst->next;
 	while (lst)
 	{
-		new_list->next = ft_lstnew(f(lst->content));
-		if (!new_list->next)
+		tmp->next = ft_lstnew(f(lst->content));
+		if (!tmp->next)
 		{
 			ft_lstclear(&map, del);
 			return (NULL);
 		}
-		new_list = new_list->next;
+		tmp = tmp->next;
 		lst = lst->next;
 	}
-	new_list->next = NULL;
+	tmp->next = NULL;
 	return (map);
 }

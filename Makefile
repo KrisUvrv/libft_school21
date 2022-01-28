@@ -6,7 +6,7 @@
 #    By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/05 14:23:36 by ebloodbe          #+#    #+#              #
-#    Updated: 2021/10/12 10:04:41 by ebloodbe         ###   ########.fr        #
+#    Updated: 2021/10/22 15:00:39 by ebloodbe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ SRCS	=	ft_atoi.c 		ft_bzero.c 		ft_calloc.c 	ft_isalnum.c\
 			ft_strrchr.c 	ft_tolower.c 	ft_toupper.c 	ft_substr.c\
 			ft_strjoin.c 	ft_strtrim.c 	ft_split.c 		ft_itoa.c\
 			ft_strmapi.c 	ft_striteri.c	ft_putchar_fd.c ft_putstr_fd.c\
-			ft_putendl_fd.c ft_putnbr_fd.c
-
+			ft_putendl_fd.c ft_putnbr_fd.c\
+			
 
 SRCS_B 	=	ft_lstnew_bonus.c	ft_lstadd_front_bonus.c	ft_lstsize_bonus.c\
 			ft_lstlast_bonus.c	ft_lstadd_back_bonus.c	ft_lstdelone_bonus.c\
@@ -29,30 +29,30 @@ SRCS_B 	=	ft_lstnew_bonus.c	ft_lstadd_front_bonus.c	ft_lstsize_bonus.c\
 
 HEADER 	= libft.h
 
-OBJS 	= ${SRCS:.c=.o}
-OBJS_B	= ${SRCS_B:.c=.o}
+OBJS 	= $(SRCS:%.c=%.o)
+OBJS_B	= $(SRCS_B:%.c=%.o)
 
 CC 		= gcc
-CFLAGS 	= -Wall -Wextra -Werror -I${HEADER}
+CFLAGS 	= -Wall -Wextra -Werror -I$(HEADER)
 RM 		= rm -f
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
-all:	${NAME}
+all:	$(NAME)
 
-${NAME}:	${OBJS} ${HEADER}
-			ar rcs ${NAME} $?
+$(NAME):	$(OBJS) $(HEADER)
+			ar rcs $(NAME) $?
 
-.o	: .c ${HEADER}
-	${CC} ${CFLAGS} -c $< -o $@
+%.o	: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus:	${OBJS} ${OBJS_B}
-		ar rcs ${NAME} ${OBJS} ${OBJS_B}
+bonus:	
+		make OBJS="$(OBJS_B)" all
 	
 clean: 
-			${RM} ${OBJS} ${OBJS_B}
+			$(RM) $(OBJS) $(OBJS_B)
 
 fclean:	clean
-			${RM} ${NAME}
+			$(RM) $(NAME)
 
 re: fclean all

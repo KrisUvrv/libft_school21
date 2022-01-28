@@ -6,7 +6,7 @@
 /*   By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:47:12 by ebloodbe          #+#    #+#             */
-/*   Updated: 2021/10/09 16:31:41 by ebloodbe         ###   ########.fr       */
+/*   Updated: 2021/10/22 13:39:59 by ebloodbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 
+	if (!s)
+		return ;
 	i = 0;
 	while (s[i])
 	{

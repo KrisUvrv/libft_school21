@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebloodbe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 13:57:05 by ebloodbe          #+#    #+#             */
-/*   Updated: 2021/10/06 10:50:51 by ebloodbe         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:38:14 by ebloodbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	dsize;
+	size_t	j;
+	size_t	dst_len;
 
-	dsize = 0;
-	while (dst[dsize] && dsize < dstsize)
-		dsize++;
-	i = dsize;
-	while (src[dsize - i] && dsize + 1 < dstsize)
+	i = 0;
+	j = 0;
+	while (dst[i] && i < dstsize)
+		i++;
+	dst_len = i;
+	while (src[j] && i + 1 < dstsize)
 	{
-		dst[dsize] = src[dsize - i];
-		dsize++;
+		dst[i] = src[j];
+		i++;
+		j++;
 	}
-	if (i < dstsize)
-		dst[dsize] = '\0';
-	return (i + ft_strlen(src));
+	if (dst_len < dstsize)
+		dst[i] = '\0';
+	return (dst_len + ft_strlen(src));
 }

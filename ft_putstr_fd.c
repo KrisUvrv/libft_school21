@@ -6,7 +6,7 @@
 /*   By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:47:26 by ebloodbe          #+#    #+#             */
-/*   Updated: 2021/10/09 15:45:25 by ebloodbe         ###   ########.fr       */
+/*   Updated: 2021/10/22 13:38:54 by ebloodbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
+	if (!s)
+		return ;
 	i = 0;
 	while (s[i])
 	{

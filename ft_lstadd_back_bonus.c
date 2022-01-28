@@ -6,7 +6,7 @@
 /*   By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 16:33:05 by ebloodbe          #+#    #+#             */
-/*   Updated: 2021/10/09 19:00:08 by ebloodbe         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:36:11 by ebloodbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
 
+	if (!new)
+		return ;
 	tmp = *lst;
 	if (tmp)
 	{

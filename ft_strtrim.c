@@ -6,7 +6,7 @@
 /*   By: ebloodbe <ebloodbe@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:46:45 by ebloodbe          #+#    #+#             */
-/*   Updated: 2021/10/06 16:51:23 by ebloodbe         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:38:54 by ebloodbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 
+	if (!s1)
+		return (NULL);
 	start = 0;
 	while (s1[start] && ft_char_in_set(s1[start], set))
 		start++;
